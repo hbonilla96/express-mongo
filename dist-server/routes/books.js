@@ -12,7 +12,7 @@ var _books = _interopRequireDefault(require("../services/books.service"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var router = _express["default"].Router();
-/* GET users listing. */
+/* GET all books. */
 
 
 router.get("/", function (req, res) {
@@ -20,14 +20,14 @@ router.get("/", function (req, res) {
     res.json(result);
   });
 });
-/* GET users listing. */
+/* GET book by name. */
 
 router.get("/byName", function (req, res) {
   _books["default"].findBookByName(req.query.name, function (err, result) {
     res.json(result);
   });
 });
-/* DELETE book listing. */
+/* DELETE book. */
 
 router["delete"]("/delete", function (req, res) {
   _books["default"].deleteByName(req.query.name, function (err, result) {
@@ -37,7 +37,7 @@ router["delete"]("/delete", function (req, res) {
     });
   });
 });
-/* CREATE book listing. */
+/* CREATE book. */
 
 router.post("/save", function (req, res, next) {
   _books["default"].createBook(req.body);
@@ -45,6 +45,11 @@ router.post("/save", function (req, res, next) {
   res.send({
     status: 200,
     message: "success"
+  });
+});
+router.put("/:id", function (req, res) {
+  _books["default"].updateById(req.params.id, req.body, function (err, result) {
+    res.json(result);
   });
 });
 var _default = router;

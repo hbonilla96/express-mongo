@@ -16,9 +16,14 @@ const deleteByName = (name, cb) => {
   books.deleteOne({ name }, cb);
 };
 
+const updateById = (id, book, cb) => {
+  books.findByIdAndUpdate(id, book, { new: true }, cb);
+};
+
 export default {
   createBook,
   getAll,
   findBookByName,
-  deleteByName
+  deleteByName,
+  updateById
 };

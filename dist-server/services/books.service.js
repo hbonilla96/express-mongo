@@ -29,10 +29,17 @@ var deleteByName = function deleteByName(name, cb) {
   }, cb);
 };
 
+var updateById = function updateById(id, book, cb) {
+  _books["default"].findByIdAndUpdate(id, book, {
+    "new": true
+  }, cb);
+};
+
 var _default = {
   createBook: createBook,
   getAll: getAll,
   findBookByName: findBookByName,
-  deleteByName: deleteByName
+  deleteByName: deleteByName,
+  updateById: updateById
 };
 exports["default"] = _default;
