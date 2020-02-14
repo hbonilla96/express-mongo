@@ -12,8 +12,13 @@ const createBook = book => {
   books.create(book);
 };
 
+const deleteByName = (name, cb) => {
+  books.deleteOne({ name }, cb);
+};
+
 export default {
   createBook,
   getAll,
-  findBookByName
+  findBookByName,
+  deleteByName
 };

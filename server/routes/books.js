@@ -16,6 +16,17 @@ router.get("/byName", function(req, res) {
   });
 });
 
+/* DELETE book listing. */
+router.delete("/delete", function(req, res) {
+  booksService.deleteByName(req.query.name, function(err, result) {
+    res.send({
+      status: 200,
+      message: "succes"
+    });
+  });
+});
+
+/* CREATE book listing. */
 router.post("/save", function(req, res, next) {
   booksService.createBook(req.body);
   res.send({

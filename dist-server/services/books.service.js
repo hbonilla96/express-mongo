@@ -23,9 +23,16 @@ var createBook = function createBook(book) {
   _books["default"].create(book);
 };
 
+var deleteByName = function deleteByName(name, cb) {
+  _books["default"].deleteOne({
+    name: name
+  }, cb);
+};
+
 var _default = {
   createBook: createBook,
   getAll: getAll,
-  findBookByName: findBookByName
+  findBookByName: findBookByName,
+  deleteByName: deleteByName
 };
 exports["default"] = _default;
