@@ -8,8 +8,7 @@ const authorSchema = new Schema(
     lastName: String,
     birthDate: Date,
     bithPlace: String,
-    language: String,
-    pages: Number
+    deathPlace: String
   },
   { strict: true }
 );
