@@ -12,7 +12,21 @@ var _books = _interopRequireDefault(require("../services/books.service"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var router = _express["default"].Router();
+/* GET users listing. */
 
+
+router.get("/", function (req, res) {
+  _books["default"].getAll(function (err, result) {
+    res.json(result);
+  });
+});
+/* GET users listing. */
+
+router.get("/byName", function (req, res) {
+  _books["default"].findBookByName(req.query.name, function (err, result) {
+    res.json(result);
+  });
+});
 router.post("/save", function (req, res, next) {
   _books["default"].createBook(req.body);
 
